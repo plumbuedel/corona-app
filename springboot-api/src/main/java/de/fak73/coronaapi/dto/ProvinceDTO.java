@@ -8,7 +8,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class StateDTO {
+public class ProvinceDTO {
     
     private Long id;
     private String information;

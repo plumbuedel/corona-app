@@ -15,7 +15,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class State {
+public class Province {
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
