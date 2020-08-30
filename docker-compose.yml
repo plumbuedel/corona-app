@@ -1,0 +1,44 @@
+version: "3.8"
+
+services: 
+    api-db:
+        image: mysql:5.7
+        container_name: corona-api-db
+        ports:
+            - 3306:3306
+        expose:
+            - 3306
+        environment: 
+            MYSQL_DATABASE: corona-app
+            MYSQL_USER: corona-app
+            MYSQL_PASSWORD: corona-app
+            MYSQL_ROOT_PASSWORD: admin
+        volumes:
+            - corona-api-db:/var/lib/mysql
+        networks:
+            - db-net
+        # user: 
+        #     1000:1000
+    corona-api:
+        build:
+            context: springboot-api
+            dockerfile: Dockerfile
+        ports:
+            - 8080:8080
+        expose:
+            - 8080
+        environment:
+            SPRING_DATASOURCE_URL: jdbc:mysql://corona-api-db:3306/corona-app
+            SPRING_DATASOURCE_USERNAME: corona-app
+            SPRING_DATASOURCE_PASSWORD: corona-app
+        networks:
+            - db-net
+            - infra-net
+        depends_on: 
+            - api-db
+volumes:
+    corona-api-db:
+networks: 
+    db-net:
+    infra-net:
+            

@@ -15,12 +15,11 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-
 public class State {
 
     @Id
-    private Long id;
     @GeneratedValue(strategy=GenerationType.AUTO)
+    private Long id;
     @Lob
     private String information;
 

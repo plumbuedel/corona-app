@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class ApiController {
 
-    @GetMapping("/")
+    @GetMapping(value = {"", "/", "/api"})
     public ResponseEntity<String> getApiFeedback() {
         return new ResponseEntity<>("this is the corona-spring-boot-api v0.1", HttpStatus.OK);
     }

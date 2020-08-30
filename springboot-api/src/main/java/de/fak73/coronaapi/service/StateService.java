@@ -24,7 +24,8 @@ public class StateService {
         return this.stateRepository.findAll().stream().map(this::convertToDTO).collect(Collectors.toList());
     }
     public StateDTO saveNewState(StateDTO stateDTO) {   
-        State newState = this.convertToEntity(stateDTO);
+        State newState = new State();
+        newState.setInformation(stateDTO.getInformation());
         return this.convertToDTO(this.stateRepository.save(newState));
     }
 

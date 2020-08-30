@@ -36,9 +36,9 @@ public class StateController {
     }
     @PostMapping("/api/state")
     public ResponseEntity<StateDTO> saveNewState(@RequestBody StateDTO stateDTO){
-        return new ResponseEntity<>(this.stateService.updateState(stateDTO), HttpStatus.CREATED);
+        return new ResponseEntity<>(this.stateService.saveNewState(stateDTO), HttpStatus.CREATED);
     }
-    @DeleteMapping("/api/state/:id")
+    @DeleteMapping("/api/state/{stateId}")
     public ResponseEntity<String> deleteState(@PathVariable Long stateId){
         this.stateService.deleteState(stateId);
         return new ResponseEntity<>("State has been deleted", HttpStatus.OK);
